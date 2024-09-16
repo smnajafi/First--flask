@@ -8,6 +8,19 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100">
+    <!-- Flash message block -->
+        <!-- Flash message block -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
     <div class="container text-center">
         <h1>Welcome to the Flask App</h1>
         <div class="card" style="width: 18rem;">
